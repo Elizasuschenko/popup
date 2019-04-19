@@ -86,28 +86,43 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-!(function webpackMissingModule() { var e = new Error("Cannot find module 'D:\\веб разработчик\\в работе\\zeo\\pop-up/index.html'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-module.exports = __webpack_require__(1);
-
-
-/***/ }),
-/* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _main_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _main_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_main_css__WEBPACK_IMPORTED_MODULE_0__);
 
+var darkLayer = document.getElementById('shadow');
+var uninstal = document.getElementById('uninstal');
+var openWin = document.getElementById('button');
+var modalWin = document.getElementById('popup');
+openWin.addEventListener('click', showModalWin);
+document.body.addEventListener('click', closeModalWin);
+uninstal.addEventListener('click', function () {
+  darkLayer.classList.remove('active');
+  modalWin.classList.remove('show');
+  alert('DONE');
+});
+
+function closeModalWin(event) {
+  if (event.target.getAttribute('data-close') === 'true') {
+    darkLayer.classList.remove('active');
+    modalWin.classList.remove('show');
+  }
+}
+
+function showModalWin() {
+  darkLayer.classList.add('active');
+  modalWin.classList.add('show');
+}
 
 /***/ }),
-/* 2 */
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(3);
+var content = __webpack_require__(2);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -121,24 +136,24 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(5)(content, options);
+var update = __webpack_require__(4)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
 if(false) {}
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // Module
-exports.push([module.i, "body{\r\n    width: 100vw;\r\n    height: 100vh;\r\n    position: relative;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\nbutton{\r\n    width: 250px;\r\n    border-radius: 50px;\r\n    height: 50px;\r\n    background-color: coral;\r\n    text-align: center;\r\n}", ""]);
+exports.push([module.i, "*{\r\n    box-sizing: border-box;\r\n    font-family: 'Open Sans', sans-serif;\r\n}\r\nbody{\r\n    margin: 0;\r\n    padding: 0;\r\n    overflow: hidden;\r\n    width: 100vw;\r\n    height: 100vh;\r\n    position: relative;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n#button{\r\n    width: 250px;\r\n    border-radius: 50px;\r\n    height: 50px;\r\n    box-shadow: 0 0 10px rgba(0,0,0,0.5);\r\n    background-color: coral;\r\n    text-align: center;\r\n    border: none;\r\n    font-size: 18px;\r\n    text-transform: uppercase;\r\n    color: white;\r\n    cursor: pointer;\r\n    font-weight: 700;\r\n}\r\n#button:active{\r\n    box-shadow: none;\r\n}\r\n#shadow{\r\n    transition: all 1s ease;\r\n    width:100%;\r\n    height:100%;\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    z-index: -1;\r\n}\r\n#shadow.active{\r\n    transition: all 1s ease;\r\n    width:100%;\r\n    height:100%;\r\n    z-index:1;\r\n    background-color: rgba(0,0,0,0.5);\r\n}\r\n.popup{\r\n    position: absolute;\r\n    background-color: white;\r\n    top: 100%;\r\n    left: 0;\r\n    right: 0;\r\n    display: flex;\r\n    flex-direction: column;\r\n    align-items: center;\r\n    justify-content: center;\r\n    text-align: center;\r\n    margin: auto;\r\n    bottom: 0;\r\n    opacity: 0;\r\n    transition: top  1s ease;\r\n    border-radius: 10px;\r\n}\r\n.show{\r\n    z-index: 2;\r\n    width: 585px;\r\n    height: 385px;\r\n    opacity: 1;\r\n    top: 0;\r\n    transition: all  1s ease;\r\n}\r\n.popup-button button{\r\n    width: 210px;\r\n    height: 40px;\r\n    cursor: pointer;\r\n}\r\n.popup #close{\r\n    position: absolute;\r\n    top: 20px;\r\n    left: 20px;\r\n    cursor: pointer;\r\n}\r\n.popup p{\r\n    font-size: 22px;\r\n    margin-top: 0;\r\n}\r\n.popup-button #cancel{\r\n    background-color: white;\r\n    border: 1px solid #8B93A3;\r\n    color: #8B93A3;\r\n    font-weight: bold;\r\n    font-size: 16px;\r\n    border-radius: 5px;\r\n}\r\n.popup-button #uninstal{\r\n    font-size: 16px;\r\n    background-color: #FF3B30;\r\n    color: white;\r\n    border-radius: 5px;\r\n    border: none;\r\n    border-bottom: 1px solid #D93229;\r\n    font-weight: bold;\r\n}", ""]);
 
 
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -229,7 +244,7 @@ function toComment(sourceMap) {
 }
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -298,7 +313,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(6);
+var	fixUrls = __webpack_require__(5);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -633,7 +648,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports) {
 
 
